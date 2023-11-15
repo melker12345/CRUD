@@ -1,0 +1,142 @@
+* {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+header a {
+    text-decoration: none;
+    margin: 2ch;
+    color: #333;
+    padding: 5px;
+}
+
+header a:hover {
+    border-radius: 5px;
+    background-color: rgb(35, 35, 35, 0.1);
+    color: #000000;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+h1 {
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+h4{
+    font-size: 28px;
+}
+
+p {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+#toogleJson {
+    margin-bottom: 3rem;
+}
+
+#posts {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#posts > div{
+    min-width: fit-content;
+    background-color: #33333333;
+    margin: 5px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+#input-container {
+    margin-bottom: 20px;
+}
+
+#input-container input {
+    margin-right: 5px;
+    padding: 5px;
+    border: 1px solid #1571d2;
+    border-radius: 4px;
+}
+
+#input-container button {
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#input-container button:hover {
+    background-color: #218838;
+}
+
+#jsonView {
+    width: 40vw;
+    padding: 3em;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+}
+
+
+body {
+    padding-bottom: 5rem;
+    /* height of the footer */
+}
+
+footer {
+    width: 100%;
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+footer a {
+    margin-left: 1ch;
+    color: #047af8;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+@media (max-width: 650px) {
+    #jsonView {
+        width: 100vw;    
+        font-size: 12px;
+    }
+
+    #input-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    input {
+        margin-bottom: 10px
+    }
+}

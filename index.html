@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="chart.html" id="chart">Chart</a>
+        <a href="#" id="index">index</a>
+    </header>
+
+    <h1>Simple CRUD App</h1>
+    <div id="input-container">
+        <input type="text" id="userName" placeholder="Name">
+        <input type="text" id="userLastName" placeholder="Last Name">
+        <input type="text" id="userEmail" placeholder="Email">
+        <button onclick="createUser()">Create User</button>
+    </div>
+    <button onclick="toggleView()" id="toogleJson">Toggle JSON View</button>
+
+    <pre id="jsonView" style="display: none;"></pre> 
+    <div id="posts"></div> <!-- posts and jsonView gets populated by JS -->
+</body>
+
+<footer>
+    <p>Powered by: </p>
+    <a href="https://reqres.in/"> Reqres</a>
+    <script src="main.js"></script>
+</footer>
+
+</html>
