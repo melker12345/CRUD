@@ -22,7 +22,6 @@ function fetchUsers() {
 function renderUsers() {
     const usersDiv = document.getElementById("posts");
     usersDiv.innerHTML = ""; // Clear existing content
-
     // Loop through each user and create HTML for each user
     rawData.data.forEach((user) => {
         usersDiv.innerHTML += createUserHTML(user);
@@ -84,6 +83,7 @@ function createUser() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+            id: rawData.data.length + 1,
             first_name: name,
             last_name: lastName,
             email: email,
@@ -174,9 +174,9 @@ function deleteUser(userId) {
         .then((response) => {
             if (response.ok) {
                 console.log("User deleted successfully");
-
+                renderUsers();
                 // Update rawData by removing the deleted user
-                const numericId = +userId; 
+                const numericId = userId; 
                 rawData.data = rawData.data.filter(
                     (user) => user.id !== numericId
                 );  
@@ -192,7 +192,7 @@ function deleteUser(userId) {
                     document.getElementById("jsonView").textContent = JSON.stringify(rawData, null, 2);
                 } 
 
-                renderUsers(); 
+                 
             
             } else {
                 console.error("Deletion failed");
