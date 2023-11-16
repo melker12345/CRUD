@@ -28,7 +28,7 @@ function renderUsers() {
     }); 
 
     // Update localStorage with the current state of rawData
-    localStorage.setItem("rawData", JSON.stringify(rawData));
+    localStorage.setItem("rawData", JSON.stringify(rawData)); 
 }
 
 // Function to toggle between JSON view and user view
