@@ -5,7 +5,7 @@ function getMostCommonDomain(data) {
         const domain = user.email.split("@")[1];
         acc[domain] = (acc[domain] || 0) + 1; // Count each domain occurrence
         return acc;
-    }, {});
+    }, {}); // {} is the initial value of acc 
 
     let maxCount = 0;
     let mostCommonDomain = "";
@@ -21,7 +21,7 @@ function getMostCommonDomain(data) {
 }
 
 const userCount = Array.isArray(rawData.data) ? rawData.data.length : 0;
-const { mostCommonDomain, count } = getMostCommonDomain(rawData.data || []); // the || [] is a fallback in case rawData.data is undefined
+const { mostCommonDomain, count } = getMostCommonDomain(rawData.data || []); // return enpty array   in case rawData.data is undefined
 
 function renderUserChart() {
     const ctx = document.getElementById("userChart").getContext("2d");

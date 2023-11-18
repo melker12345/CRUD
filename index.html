@@ -11,8 +11,8 @@
 <body>
 
     <header>
-        <a href="chart.html" id="chart">Chart</a>
         <a href="#" id="index">index</a>
+        <a href="chart.html" id="chart">Chart</a>
     </header>
 
     <h1>Simple CRUD App</h1>
@@ -22,16 +22,22 @@
         <input type="text" id="userEmail" placeholder="Email">
         <button onclick="createUser()">Create User</button>
     </div>
+
     <button onclick="toggleView()" id="toogleJson">Toggle JSON View</button>
 
-    <pre id="jsonView" style="display: none;"></pre> 
-    <div id="posts"></div> <!-- posts and jsonView gets populated by JS -->
-</body>
+    <div id="currentUsers">
+        <h2>Current Users in database:</h2>
+    </div>
 
-<footer>
-    <p>Powered by: </p>
-    <a href="https://reqres.in/"> Reqres</a>
+    <pre id="jsonView" style="display: none"></pre>
+
+    <div id="posts"></div> <!-- posts and jsonView gets populated by JS -->
+
+    <footer>
+        <p id="footerP">Powered by: </p>
+        <a href="https://reqres.in/"> Reqres</a>
+    </footer>
     <script src="main.js"></script>
-</footer>
+</body>
 
 </html>

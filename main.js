@@ -1,6 +1,6 @@
 let rawData = {}; // Variable to store raw JSON data
 const apiUrl = "https://reqres.in/api/users/";
-let isJsonView = false; // 
+let isJsonView = false; //
 
 // Function to fetch users from the API
 function fetchUsers() {
@@ -12,8 +12,8 @@ function fetchUsers() {
             return response.json();
         })
         .then((data) => {
-            rawData = data; 
-            renderUsers(); 
+            rawData = data;
+            renderUsers();
         })
         .catch((error) => console.error("Fetch error:", error));
 }
@@ -22,24 +22,31 @@ function fetchUsers() {
 function renderUsers() {
     const usersDiv = document.getElementById("posts");
     usersDiv.innerHTML = ""; // Clear existing content
-    // Loop through each user and create HTML for each user
     rawData.data.forEach((user) => {
         usersDiv.innerHTML += createUserHTML(user);
-    }); 
+    });
 
     // Update localStorage with the current state of rawData
-    localStorage.setItem("rawData", JSON.stringify(rawData)); 
+    localStorage.setItem("rawData", JSON.stringify(rawData));
 }
 
 // Function to toggle between JSON view and user view
 function toggleView() {
     isJsonView = !isJsonView;
-    document.getElementById("posts").style.display = isJsonView ? "none" : "block"; // Toggle display of the users view
-    document.getElementById("jsonView").style.display = isJsonView ? "block" : "none"; // Toggle display of the JSON view
-    
+    document.getElementById("posts").style.display = isJsonView
+        ? "none"
+        : "flex";  
+    document.getElementById("jsonView").style.display = isJsonView
+        ? "block"
+        : "none"; // Toggle display of the JSON view
+
     // Update the JSON view with the current state of rawData
     if (isJsonView) {
-        document.getElementById("jsonView").textContent = JSON.stringify(rawData, null, 2); 
+        document.getElementById("jsonView").textContent = JSON.stringify(
+            rawData,
+            null,
+            2
+        );
     }
 }
 
@@ -55,10 +62,8 @@ function createUserHTML(user) {
             `;
 }
 
-
 // POST request to create a new user
 function createUser() {
-
     // Get values from input fields
     const name = document.getElementById("userName").value;
     const lastName = document.getElementById("userLastName").value;
@@ -87,8 +92,8 @@ function createUser() {
             first_name: name,
             last_name: lastName,
             email: email,
-        }),  
-    }) 
+        }),
+    })
         .then((response) => response.json())
         .then((user) => {
             console.log("Created user:", user);
@@ -99,14 +104,15 @@ function createUser() {
                 first_name: name,
                 last_name: lastName,
                 email: email,
-            }); 
+            });
             renderUsers();
 
-            // Update the JSON view 
+            // Update the JSON view
             if (isJsonView) {
-                document.getElementById("jsonView").textContent = JSON.stringify(rawData, null, 2);
+                document.getElementById("jsonView").textContent =
+                    JSON.stringify(rawData, null, 2);
             }
-        }) 
+        })
         .catch((error) => {
             console.error("Error creating user:", error);
             alert("Failed to create user");
@@ -115,8 +121,7 @@ function createUser() {
 
 // PATCH request to update a user
 function updateUser(id) {
-
-    // Get updated values from input fields 
+    // Get updated values from input fields
     const newName = document.getElementById("userName").value;
     const newLastName = document.getElementById("userLastName").value;
     const newEmail = document.getElementById("userEmail").value;
@@ -132,9 +137,9 @@ function updateUser(id) {
         return;
     }
 
-    // Send PATCH request to update the user
+    // Send PATCH request
     fetch(apiUrl + "/" + id, {
-        method: "PATCH", 
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             id: id,
@@ -156,12 +161,13 @@ function updateUser(id) {
                     last_name: newLastName,
                     email: newEmail,
                 };
-                
+
                 renderUsers();
 
-                // Update the JSON view 
+                // Update the JSON view
                 if (isJsonView) {
-                    document.getElementById("jsonView").textContent = JSON.stringify(rawData, null, 2);
+                    document.getElementById("jsonView").textContent =
+                        JSON.stringify(rawData, null, 2);
                 }
             }
         })
@@ -176,10 +182,10 @@ function deleteUser(userId) {
                 console.log("User deleted successfully");
                 renderUsers();
                 // Update rawData by removing the deleted user
-                const numericId = userId; 
+                const numericId = userId;
                 rawData.data = rawData.data.filter(
                     (user) => user.id !== numericId
-                );  
+                );
 
                 // Remove the users div
                 const userDiv = document.getElementById(`user-${userId}`);
@@ -189,15 +195,12 @@ function deleteUser(userId) {
 
                 // Update the view of the JSON data
                 if (isJsonView) {
-                    document.getElementById("jsonView").textContent = JSON.stringify(rawData, null, 2);
-                } 
-
-                 
-            
+                    document.getElementById("jsonView").textContent =
+                        JSON.stringify(rawData, null, 2);
+                }
             } else {
                 console.error("Deletion failed");
             }
-
         })
         .catch((error) => console.error("Error:", error));
 }

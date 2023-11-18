@@ -55,7 +55,6 @@ p {
 
 #posts {
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -65,7 +64,7 @@ p {
 #posts > div{
     min-width: fit-content;
     background-color: #33333333;
-    margin: 5px;
+    margin: 20px;
     padding: 20px;
     border-radius: 10px;
 }
@@ -104,9 +103,9 @@ p {
 }
 
 
+
 body {
     padding-bottom: 5rem;
-    /* height of the footer */
 }
 
 footer {
@@ -114,20 +113,30 @@ footer {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 footer a {
+    text-align: center;
     margin-left: 1ch;
     color: #047af8;
     text-decoration: none;
-    font-size: 12px;
+    font-size: 18px;
+}
+
+#footerP{
+    margin: 0;
+    padding: 0;
 }
 
 
 @media (max-width: 650px) {
     #jsonView {
-        width: 100vw;    
-        font-size: 12px;
+        margin: 4px;
+        width: fit-content;    
+        font-size: 9px;
+        padding: 10px 3px 10px 3px;
+        border-radius: 10px;
     }
 
     #input-container {
